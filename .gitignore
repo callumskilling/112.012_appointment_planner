@@ -17,7 +17,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
-.code-workspace
+112.012_appointment_planner.code-workspace
 
 npm-debug.log*
 yarn-debug.log*
