@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
 
 import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage";
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
-  /*
-  Define state variables for 
-  contacts and appointments 
-  */
+  const [contacts, setContacts] = useState([])
+  const [appointments, setAppointments] = useState([])
 
-  /*
-  Implement functions to add data to
-  contacts and appointments
-  */
+
+  const addContact = ( contactName, contactPhoneNumber, contactEmail ) => {
+    setContacts(prev => {
+      const newContact = {
+        name: contactName,
+        number: contactPhoneNumber,
+        email: contactEmail
+      }
+      return {
+        ...prev, newContact
+      }
+    })
+  }
 
   return (
     <>
