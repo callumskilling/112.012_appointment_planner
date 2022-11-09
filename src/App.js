@@ -22,6 +22,20 @@ function App() {
     })
   }
 
+  const addAppointment = ( title, contactName, date, time ) => {
+    setAppointments(prev => {
+      const newAppointment = {
+        title: title,
+        contact: contactName,
+        date: date,
+        time: time
+      }
+      return {
+        ...prev, newAppointment
+      }
+    })
+  }
+
   return (
     <>
       <nav>
