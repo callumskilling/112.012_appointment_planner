@@ -44,8 +44,8 @@ function App() {
       </nav>
       <main>
           <Routes>
-            <Route path="/contacts" element={<ContactsPage />} />
-            <Route path="/appointments" element={<AppointmentsPage />} />
+            <Route path="/contacts" element={<ContactsPage contacts={contacts} addContact={addContact}/>} />
+            <Route path="/appointments" element={<AppointmentsPage appointments={appointments} addAppointment={addAppointment}/>} />
           </Routes>
       </main>
     </>
