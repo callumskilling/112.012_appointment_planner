@@ -1,33 +1,34 @@
 import React, { useState } from "react";
 
+/* Defined state variables for contact info and duplicate check, will test when I create the new contact form */
 export const ContactsPage = () => {
-  const [currentName, setCurrentName] = useState('');
-  const [currentPhone, setCurrentPhone] = useState('');
-  const [currentEmail, setCurrentEmail] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
 
-  const handleNameChange = (e) => {
-    const newName = e.target.value;
-    const isDuplicate = this.props.contacts.some = (contact) => {
-      return contact.name === newName
+  const duplicateCheck = (name) => {
+    this.props.contacts.some = (contact) => {
+      return contact.name === name
     }
-    isDuplicate ? alert("DUPLICATE") : setCurrentName({newName}) ;
   }
 
-  /* Defined state variables for contact info and duplicate check, will test when I create the new contact form */
-  
-
+  /* I am presuming this is a little hard code-ish, will come back and see if this can be refactored to be responsive to the fields in ContactForm */
   const handleSubmit = (e) => {
     e.preventDefault();
-    /*
-    Add contact info and clear data
-    if the contact name is not a duplicate
-    */
-  };
 
-  /*
-  Using hooks, check for contact name in the 
-  contacts array variable in props
-  */
+    setName(e.target.name)
+    setPhone(e.target.phone)
+    setEmail(e.target.email)
+
+    if (duplicateCheck(name)) {
+      return alert("Duplicate")
+    } else {
+      this.props.addContact(name, phone, email)
+      document.getElementById("name").innerText = ""
+      document.getElementById("phone").innerText = ""
+      document.getElementById("email").innerText = ""
+    }
+  };
 
   return (
     <div>
