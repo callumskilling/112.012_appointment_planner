@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const ContactsPage = () => {
-  /*
-  Define state variables for 
-  contact info and duplicate check
-  */
+  const [currentName, setCurrentName] = useState('');
+  const [currentPhone, setCurrentPhone] = useState('');
+  const [currentEmail, setCurrentEmail] = useState('');
+
+  const handleNameChange = (e) => {
+    const newName = e.target.value;
+    const isDuplicate = this.props.contacts.some = (contact) => {
+      return contact.name === newName
+    }
+    isDuplicate ? alert("DUPLICATE") : setCurrentName({newName}) ;
+  }
+
+  /* Defined state variables for contact info and duplicate check, will test when I create the new contact form */
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
