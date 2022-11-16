@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { ContactForm } from "../../components/contactForm/ContactForm";
+import { TileList } from "../../components/tileList/TileList";
 
 /* Defined state variables for contact info and duplicate check, will test when I create the new contact form */
-export const ContactsPage = () => {
+export const ContactsPage = (props) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
 
   const duplicateCheck = (name) => {
-    this.props.contacts.some = (contact) => {
+    props.contacts.some = (contact) => {
       return contact.name === name
     }
   }
@@ -23,7 +25,7 @@ export const ContactsPage = () => {
     if (duplicateCheck(name)) {
       return alert("Duplicate")
     } else {
-      this.props.addContact(name, phone, email)
+      props.addContact(name, phone, email)
       document.getElementById("name").innerText = ""
       document.getElementById("phone").innerText = ""
       document.getElementById("email").innerText = ""
@@ -33,11 +35,13 @@ export const ContactsPage = () => {
   return (
     <div>
       <section>
-        <h2>Add Contact</h2> 
+        <h2>Add Contact</h2>
+        <ContactForm name={name} setName={setName} phone={phone} setPhone={setPhone} email={email} setEmail={setEmail} handleSubmit={handleSubmit} />
       </section>
       <hr />
       <section>
         <h2>Contacts</h2>
+        <TileList contacts={props.contacts} />
       </section>
     </div>
   );
