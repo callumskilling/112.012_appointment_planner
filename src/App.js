@@ -16,9 +16,7 @@ function App() {
         number: contactPhoneNumber,
         email: contactEmail
       }
-      return {
-        ...prev, newContact
-      }
+      return [ ...prev, newContact ]
     })
   }
 
@@ -30,9 +28,7 @@ function App() {
         date: date,
         time: time
       }
-      return {
-        ...prev, newAppointment
-      }
+      return [...prev, newAppointment]
     })
   }
 

@@ -2,33 +2,23 @@ import React, { useState } from "react";
 import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 
-/* Defined state variables for contact info and duplicate check, will test when I create the new contact form */
 export const ContactsPage = (props) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
 
-  const duplicateCheck = (name) => {
-    props.contacts.some = (contact) => {
-      return contact.name === name
-    }
-  }
-
-  /* I am presuming this is a little hard code-ish, will come back and see if this can be refactored to be responsive to the fields in ContactForm */
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setName(e.target.name)
-    setPhone(e.target.phone)
-    setEmail(e.target.email)
-
-    if (duplicateCheck(name)) {
-      return alert("Duplicate")
+    const contactNames = props.contacts.map(contact => {
+      return contact.name 
+    })
+    if (contactNames.includes(name)) {
+      alert('Duplicate Contact Entered.')
     } else {
       props.addContact(name, phone, email)
-      document.getElementById("name").innerText = ""
-      document.getElementById("phone").innerText = ""
-      document.getElementById("email").innerText = ""
+      document.getElementById("name").value = ""
+      document.getElementById("phone").value = ""
+      document.getElementById("email").value = ""
     }
   };
 
@@ -45,4 +35,4 @@ export const ContactsPage = (props) => {
       </section>
     </div>
   );
-};
+}
