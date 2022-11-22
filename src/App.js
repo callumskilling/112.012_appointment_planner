@@ -6,7 +6,7 @@ import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
   const [contacts, setContacts] = useState([{name: 'Callum', number: '0123 456 789', email: 'me@me.com'},{name: 'Chris', number: '1234 567 890', email: 'him@him.com'}])
-  const [appointments, setAppointments] = useState([])
+  const [appointments, setAppointments] = useState([{title: 'Important Meeting', contact: 'Callum', date: '22nd November 2022', time: '2:00pm'}])
 
 
   const addContact = ( contactName, contactPhoneNumber, contactEmail ) => {
@@ -41,7 +41,7 @@ function App() {
       <main>
           <Routes>
             <Route path="/contacts" element={<ContactsPage contacts={contacts} addContact={addContact}/>} />
-            <Route path="/appointments" element={<AppointmentsPage appointments={appointments} addAppointment={addAppointment}/>} />
+            <Route path="/appointments" element={<AppointmentsPage appointments={appointments} addAppointment={addAppointment} contacts={contacts}/>} />
           </Routes>
       </main>
     </>
